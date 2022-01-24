@@ -7,12 +7,15 @@ function Cal1() {
   const [data, setData] = useState();
   const [time, setTime] = useState();
   const [num, setNum] = useState("");
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState("USD");
+  const [exchageRate, setExchageRate] = useState(1);
 
+  const API_KEY = "f5fcbf60c6a41cfdcbef3163bb8ed053";
+  const Currencies = "USD,CAD,KRW,HKD,JPY,CNY";
   useEffect(() => {
     axios
       .get(
-        "http://api.currencylayer.com/Live?access_key=f5fcbf60c6a41cfdcbef3163bb8ed053&currencies=USD,CAD,KRW,HKD,JPY,CNY&format=1&date=YYYY-MM-DD"
+        `http://api.currencylayer.com/Live?access_key=${API_KEY}&currencies=${Currencies}&format=1`
       )
       .then((res) => {
         setData(res.data.quotes);
@@ -22,11 +25,6 @@ function Cal1() {
         console.log(err);
       });
   }, []);
-
-  //기준일
-  const myDate = new Date(time * 1000);
-  const month = myDate.toLocaleDateString("en-us", { month: "short" });
-  const calDate = myDate.getFullYear() + "-" + month + "-" + myDate.getDate();
 
   //input comma
   const inputPriceFormat = (str) => {
@@ -45,18 +43,21 @@ function Cal1() {
   const selectList = ["USD", "CAD", "KRW", "HKD", "JPY", "CNY"];
   const handleSelect = (e) => {
     setSelected(e.target.value);
+    setExchageRate(data["USD" + e.target.value]);
   };
 
   //환율
-  // const select = "USD" + [selected];
-  // const exchangeRate = data[`${select}`];
+  const exchageCal = (parseFloat(num.replace(/,/g, "")) * exchageRate).toFixed(
+    2
+  );
+  const exchangeCalComma = inputPriceFormat(exchageCal);
 
   return (
     <div className="container">
       <input
         type="text"
         value={num}
-        placeholder="금액을 입력하세요."
+        placeholder="USD"
         onChange={(e) => {
           setNum(inputPriceFormat(e.target.value));
         }}
@@ -68,11 +69,12 @@ function Cal1() {
           </option>
         ))}
       </select>
-      {/* <h2>
-        {selected} {exchangeRate}
-      </h2> */}
-      {/* <div>기준일 : {calDate}</div> */}
-      <TabMenu select={selectList}></TabMenu>
+
+      <TabMenu
+        time={time}
+        selected={selected}
+        exchangeCalComma={exchangeCalComma}
+      />
     </div>
   );
 }
