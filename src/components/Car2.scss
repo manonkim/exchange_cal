@@ -1,0 +1,20 @@
+body {
+  background-color: rgb(160, 156, 156);
+}
+.container {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 260px;
+  height: 200px;
+  padding: 30px;
+  gap: 0.5rem;
+  background-color: #4b4b4b;
+  border-radius: 5px;
+
+  input,
+  select {
+    padding: 7px 12px;
+    color: #454545;
+  }
+}

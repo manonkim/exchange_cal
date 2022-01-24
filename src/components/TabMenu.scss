@@ -1,0 +1,15 @@
+.tabMenu {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  background-color: red;
+
+  .submenu {
+    padding: 13px 8px;
+    margin-left: 0;
+    background-color: yellow;
+    cursor: pointer;
+    font-size: 13px;
+  }
+}
