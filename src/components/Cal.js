@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import TabMenu from "./TabMenu";
-import "./Car2.scss";
+import "./Car.scss";
 
 function Cal1() {
   const [data, setData] = useState();
@@ -45,8 +45,6 @@ function Cal1() {
     setSelected(e.target.value);
     setExchageRate(data["USD" + e.target.value]);
   };
-
-  //환율
 
   return (
     <div className="container">

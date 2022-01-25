@@ -1,13 +1,7 @@
-// import Cal1 from "./components/Cal1";
-import Cal2 from "./components/Cal2";
+import Cal from "./components/Cal";
 
 function App() {
-  return (
-    <>
-      {/* <Cal1></Cal1> */}
-      <Cal2></Cal2>
-    </>
-  );
+  return <Cal></Cal>;
 }
 
 export default App;

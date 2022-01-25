@@ -11,7 +11,11 @@ body {
   background-color: rgb(31, 31, 31);
   border-radius: 5px;
 
-  input,
+  input {
+    padding: 7px 12px;
+    color: #454545;
+  }
+
   select {
     padding: 7px 12px;
     color: #454545;

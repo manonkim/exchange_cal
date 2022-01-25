@@ -12,7 +12,6 @@ const TabMenu = ({ time, selected, exchageRate, num, data }) => {
 
   //tab
   const selectTab = ["CAD", "KRW", "HKD", "JPY", "CNY"];
-
   const handleTab = (e) => {
     setSelectedTab(e.target.innerHTML);
     setExchangeRateTab(data["USD" + e.target.innerHTML]);
@@ -21,10 +20,6 @@ const TabMenu = ({ time, selected, exchageRate, num, data }) => {
   const cal = (exchangeRateTab / exchageRate) * number;
   const exchangeCalComma = Number(cal).toLocaleString("en");
 
-  //comma
-  // const exchageCal = (parseFloat(cal.replace(/,/g, "")) * exchageRate).toFixed(
-  //   2
-  // );
   return (
     <ul className="tabMenu">
       {selectTab.map((ele, index) => {
