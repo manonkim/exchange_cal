@@ -1,4 +1,4 @@
-## 환율 계산기
+## Exchange Rate Calculator
 
 ### `환율 정보 API`
 
@@ -7,10 +7,15 @@
 
 ### `구현 기능`
 
+
+https://user-images.githubusercontent.com/85450378/150983812-71a41a09-6830-421c-8a8d-56a9e764c759.mov
+
+
 1. Input창에 금액 입력
 2. `Dropdown Menu에서 기준통화` 설정
 3. `Tab menu에서 상대통화(Counter Currency)`를 설정
 4. 기준통화/상대통화 \* 금액 = 환율
+
 
 ### `세부 기능`
 
@@ -18,3 +23,4 @@
 - DropDown Menu : 기준통화 지정 (USD,CAD,KRW, HKD,JPY,CNY)
 - Tab Menu : tab foucus된 통화로 상대통화 지정
 - Date : Unix timestamp > YYYY-MM-DD로 표기 / 통화변경 시 기준일 정보 동기화
+
