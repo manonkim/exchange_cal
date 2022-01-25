@@ -17,14 +17,14 @@ const TabMenu = ({ time, selected, exchageRate, num, data }) => {
     setSelectedTab(e.target.innerHTML);
     setExchangeRateTab(data["USD" + e.target.innerHTML]);
   };
-  const number = num.replace(",", "");
+  const number = num.replaceAll(",", "");
   const cal = (exchangeRateTab / exchageRate) * number;
+  const exchangeCalComma = Number(cal).toLocaleString("en");
+
   //comma
   // const exchageCal = (parseFloat(cal.replace(/,/g, "")) * exchageRate).toFixed(
   //   2
   // );
-  const exchangeCalComma = Number(cal).toLocaleString("en");
-
   return (
     <ul className="tabMenu">
       {selectTab.map((ele, index) => {

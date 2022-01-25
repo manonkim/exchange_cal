@@ -52,7 +52,7 @@ function Cal1() {
     <div className="container">
       <input
         type="text"
-        maxLength="7"
+        maxLength="10"
         value={num}
         placeholder="USD"
         onChange={(e) => {
