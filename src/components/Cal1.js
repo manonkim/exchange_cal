@@ -20,7 +20,7 @@ function Cal1() {
       <div>환율계산</div>
       <div>
         송금국가 :
-        <select name="choice">
+        <select name="choice" type="number">
           <option value="KRW">한국(KRW)</option>
           <option value="JPY">일본(JPY)</option>
           <option value="PHP">필리핀(PHP)</option>

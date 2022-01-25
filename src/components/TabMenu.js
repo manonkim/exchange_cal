@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./TabMenu.scss";
 
-const TabMenu = ({ time, selected, exchangeCalComma, data }) => {
-  // const [currentTab, setCurrentTab] = useState(0);
-  // const selectMenuHandler = (index) => {
-  //   setCurrentTab(index);
-  // };
+const TabMenu = ({ time, selected, exchageRate, num, data }) => {
+  const [selectedTab, setSelectedTab] = useState("USD");
+  const [exchangeRateTab, setExchangeRateTab] = useState(1);
 
   //기준일
   const myDate = new Date(time * 1000);
@@ -15,16 +13,27 @@ const TabMenu = ({ time, selected, exchangeCalComma, data }) => {
   //tab
   const selectTab = ["CAD", "KRW", "HKD", "JPY", "CNY"];
 
+  const handleTab = (e) => {
+    setSelectedTab(e.target.innerHTML);
+    setExchangeRateTab(data["USD" + e.target.innerHTML]);
+  };
+  const number = num.replace(",", "");
+  const cal = (exchangeRateTab / exchageRate) * number;
+  //comma
+  // const exchageCal = (parseFloat(cal.replace(/,/g, "")) * exchageRate).toFixed(
+  //   2
+  // );
+  const exchangeCalComma = Number(cal).toLocaleString("en");
+
   return (
     <ul className="tabMenu">
       {selectTab.map((ele, index) => {
         return (
           <li
             key={index}
-            className={ele === selected ? "submenu focused" : "submenu"}
-            // onClick={() => {
-            //   selectMenuHandler(index);
-            // }}
+            value={ele}
+            className={ele === selectedTab ? "submenu focused" : "submenu"}
+            onClick={(e) => handleTab(e)}
           >
             {ele === selected ? "USD" : ele}
           </li>
@@ -32,7 +41,7 @@ const TabMenu = ({ time, selected, exchangeCalComma, data }) => {
       })}
       <div className="wrap">
         <h2>
-          {selected}&nbsp;&nbsp;
+          {selectedTab}&nbsp;&nbsp;
           {exchangeCalComma === "NaN" ? 0 : exchangeCalComma}
         </h2>
         <div className="date">기준일 : {calDate}</div>

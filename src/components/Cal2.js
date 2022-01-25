@@ -47,16 +47,12 @@ function Cal1() {
   };
 
   //환율
-  const exchageCal = (parseFloat(num.replace(/,/g, "")) * exchageRate).toFixed(
-    2
-  );
-
-  const exchangeCalComma = Number(exchageCal).toLocaleString("en");
 
   return (
     <div className="container">
       <input
         type="text"
+        maxLength="7"
         value={num}
         placeholder="USD"
         onChange={(e) => {
@@ -74,7 +70,8 @@ function Cal1() {
       <TabMenu
         time={time}
         selected={selected}
-        exchangeCalComma={exchangeCalComma}
+        exchageRate={exchageRate}
+        num={num}
         data={data}
       />
     </div>
