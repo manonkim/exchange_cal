@@ -50,7 +50,8 @@ function Cal1() {
   const exchageCal = (parseFloat(num.replace(/,/g, "")) * exchageRate).toFixed(
     2
   );
-  const exchangeCalComma = inputPriceFormat(exchageCal);
+
+  const exchangeCalComma = Number(exchageCal).toLocaleString("en");
 
   return (
     <div className="container">
@@ -74,6 +75,7 @@ function Cal1() {
         time={time}
         selected={selected}
         exchangeCalComma={exchangeCalComma}
+        data={data}
       />
     </div>
   );
