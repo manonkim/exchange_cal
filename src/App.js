@@ -1,7 +1,7 @@
-import Cal from "./components/Cal";
+import Currency from "./components/Currency";
 
 function App() {
-  return <Cal></Cal>;
+  return <Currency></Currency>;
 }
 
 export default App;

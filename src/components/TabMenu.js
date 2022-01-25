@@ -16,9 +16,11 @@ const TabMenu = ({ time, selected, exchageRate, num, data }) => {
     setSelectedTab(e.target.innerHTML);
     setExchangeRateTab(data["USD" + e.target.innerHTML]);
   };
+
   const number = num.replaceAll(",", "");
   const cal = (exchangeRateTab / exchageRate) * number;
-  const exchangeCalComma = Number(cal).toLocaleString("en");
+  const currency = cal.toFixed(2);
+  const exchangeCalComma = Number(currency).toLocaleString("en");
 
   return (
     <ul className="tabMenu">
@@ -27,7 +29,9 @@ const TabMenu = ({ time, selected, exchageRate, num, data }) => {
           <li
             key={index}
             value={ele}
-            className={ele === selectedTab ? "submenu focused" : "submenu"}
+            className={
+              ele === selectedTab && "USD" ? "submenu focused" : "submenu"
+            }
             onClick={(e) => handleTab(e)}
           >
             {ele === selected ? "USD" : ele}
@@ -35,11 +39,11 @@ const TabMenu = ({ time, selected, exchageRate, num, data }) => {
         );
       })}
       <div className="wrap">
-        <h2>
+        <h3>
           {selectedTab}&nbsp;&nbsp;
           {exchangeCalComma === "NaN" ? 0 : exchangeCalComma}
-        </h2>
-        <div className="date">기준일 : {calDate}</div>
+        </h3>
+        <h5>기준일 : {calDate}</h5>
       </div>
     </ul>
   );

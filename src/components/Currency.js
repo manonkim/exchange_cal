@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import TabMenu from "./TabMenu";
-import "./Car.scss";
+import "./Currency.scss";
 
-function Cal1() {
+function Currency() {
   const [data, setData] = useState();
   const [time, setTime] = useState();
   const [num, setNum] = useState("");
@@ -76,4 +76,4 @@ function Cal1() {
   );
 }
 
-export default Cal1;
+export default Currency;
